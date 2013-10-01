@@ -31,7 +31,10 @@ LOCAL_SHARED_LIBRARIES :=       \
         libutils                \
         libcutils               \
         libdl                   \
-        libui                   \
+        libui
+
+LOCAL_C_INCLUDES += $(kernel_includes)
+LOCAL_ADDITIONAL_DEPENDENCIES += $(common_deps)
 
 LOCAL_MODULE := libstagefrighthw
 

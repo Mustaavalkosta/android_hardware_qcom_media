@@ -66,6 +66,7 @@ LOCAL_COPY_HEADERS      += inc/QCMetaData.h
 
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/src/common
 LOCAL_C_INCLUDES        += $(LOCAL_PATH)/inc
+
 LOCAL_PRELINK_MODULE    := false
 LOCAL_MODULE            := libOmxCore
 LOCAL_MODULE_TAGS       := optional
@@ -75,6 +76,9 @@ LOCAL_CFLAGS            := $(OMXCORE_CFLAGS)
 LOCAL_SRC_FILES         := src/common/omx_core_cmp.cpp
 LOCAL_SRC_FILES         += src/common/qc_omx_core.c
 LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table_android.c
+
+LOCAL_C_INCLUDES += $(kernel_includes)
+LOCAL_ADDITIONAL_DEPENDENCIES += $(common_deps)
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -95,6 +99,9 @@ LOCAL_CFLAGS            := $(OMXCORE_CFLAGS)
 LOCAL_SRC_FILES         := src/common/omx_core_cmp.cpp
 LOCAL_SRC_FILES         += src/common/qc_omx_core.c
 LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table.c
+
+LOCAL_C_INCLUDES += $(kernel_includes)
+LOCAL_ADDITIONAL_DEPENDENCIES += $(common_deps)
 
 include $(BUILD_SHARED_LIBRARY)
 
