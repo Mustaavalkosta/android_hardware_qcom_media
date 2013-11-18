@@ -19,7 +19,7 @@ libOmxVdec-def += -DCDECL
 libOmxVdec-def += -DT_ARM
 libOmxVdec-def += -DNO_ARM_CLZ
 libOmxVdec-def += -UENABLE_DEBUG_LOW
-libOmxVdec-def += -DENABLE_DEBUG_HIGH
+#libOmxVdec-def += -DENABLE_DEBUG_HIGH
 libOmxVdec-def += -DENABLE_DEBUG_ERROR
 libOmxVdec-def += -UINPUT_BUFFER_LOG
 libOmxVdec-def += -UOUTPUT_BUFFER_LOG
@@ -93,6 +93,9 @@ else
 LOCAL_SRC_FILES         += src/omx_vdec.cpp
 endif
 LOCAL_SRC_FILES         += ../common/src/extra_data_handler.cpp
+
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
 include $(BUILD_SHARED_LIBRARY)
 
 # ---------------------------------------------------------------------------------
@@ -115,6 +118,8 @@ LOCAL_SHARED_LIBRARIES    := libutils libOmxCore libOmxVdec libbinder
 LOCAL_SRC_FILES           := src/queue.c
 LOCAL_SRC_FILES           += test/omx_vdec_test.cpp
 
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
 include $(BUILD_EXECUTABLE)
 
 # ---------------------------------------------------------------------------------
@@ -134,6 +139,8 @@ LOCAL_PRELINK_MODULE            := false
 
 LOCAL_SRC_FILES                 := src/message_queue.c
 LOCAL_SRC_FILES                 += test/decoder_driver_test.c
+
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 include $(BUILD_EXECUTABLE)
 
